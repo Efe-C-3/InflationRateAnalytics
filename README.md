@@ -10,5 +10,5 @@ For this project, I will download a dataset from OECD (Organisation for Economic
 
 Below is a sample blueprint of the resentation of analytics on a website.
 ![image1](https://github.com/Efe-C-3/InflationRateAnalytics/blob/main/static/New%20Wireframe%201.png)
-![image2](...)
-![image3](...)
+![image2](https://github.com/Efe-C-3/InflationRateAnalytics/blob/main/static/New%20Wireframe%201%20copy.png)
+![image3](https://github.com/Efe-C-3/InflationRateAnalytics/blob/main/static/New%20Wireframe%201%20copy%202.png)
