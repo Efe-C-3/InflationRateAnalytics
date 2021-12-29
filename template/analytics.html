@@ -1,0 +1,35 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}
+Analytics page
+{% endblock %}
+
+{% block content %}
+<body>
+
+    <div class="tab">
+        <button id="defaultOpen" class="tablinks" onclick="openTab(event, 'Bar')">Tab #1</button>
+        <button class="tablinks" onclick="openTab(event, 'Pie')">Tab #2</button>
+        <button class="tablinks" onclick="openTab(event, 'Line')">Tab #3</button>
+      </div>
+      
+      <div id="Bar" class="tabcontent" style="display: block;">
+        <h2>Graph #1</h2>
+        <p></p>
+        <img style="width: 720px; height: 480px;" alt="Image description" src="{% static 'media/barchart.jpg' %}"/>
+      </div>
+      
+      <div id="Pie" class="tabcontent style="display: none;">
+        <h2>Graph #2</h2>
+        <p></p>
+      </div>
+      
+      <div id="Line" class="tabcontent style="display: none;">
+        <h2>Graph #3</h2>
+        <p></p>
+      </div> 
+
+</body>
+
+{% endblock content %}

@@ -9,6 +9,6 @@ In my passion project, the goal is to project price changes in different product
 For this project, I will download a dataset from OECD (Organisation for Economic Co-operation and Development) website, use Python and SQL languages, Pandas and statistics framework, Spark and AWS data pipeline technologies, VS Code visualization tool and Heroku web platform to present analytics publicly. 
 
 Below is a sample blueprint of the resentation of analytics on a website.
-![image1](...)
-![image2](...)
-![image3](...)
+![image1](https://github.com/Efe-C-3/InflationRateAnalytics/blob/main/static/New%20Wireframe%201.png)
+![image2](https://github.com/Efe-C-3/InflationRateAnalytics/blob/main/static/New%20Wireframe%201%20copy.png)
+![image3](https://github.com/Efe-C-3/InflationRateAnalytics/blob/main/static/New%20Wireframe%201%20copy%202.png)
