@@ -7,28 +7,87 @@ Analytics page
 
 {% block content %}
 <body>
+  <div class="tab">
+      <button id="defaultOpen" class="tablinks" onclick="openTab(event, 'Load')">Load</button>
+      <button class="tablinks" onclick="openTab(event, 'Transform')">Transform</button>
+      <button class="tablinks" onclick="openTab(event, 'Extract')">Extract</button>
+  </div>
+  
+  <div id="Load" class="tabcontent" style="display: block;">
+    <h2>Graph</h2>
+    <p></p>
+    <img style="width: 720px; height: 480px;" alt="Image description" src="{% static 'media/barchart.jpg' %}"/>
+  </div>
+  
+  <div id="Transform" class="tabcontent style="display: none;">
+    <h2>Code</h2>
+    <div class="scroll">
+      <pre>
+      <code>
+      # Import first time series dataset
+      data1 = pd.read_csv(
+          "data/data1.csv",
+          parse_dates=["Date"],
+          index_col="Date",
+      ).dropna()
+      
+      >>> data1.head()
 
-    <div class="tab">
-        <button id="defaultOpen" class="tablinks" onclick="openTab(event, 'Bar')">Tab #1</button>
-        <button class="tablinks" onclick="openTab(event, 'Pie')">Tab #2</button>
-        <button class="tablinks" onclick="openTab(event, 'Line')">Tab #3</button>
-      </div>
-      
-      <div id="Bar" class="tabcontent" style="display: block;">
-        <h2>Graph #1</h2>
-        <p></p>
-        <img style="width: 720px; height: 480px;" alt="Image description" src="{% static 'media/barchart.jpg' %}"/>
-      </div>
-      
-      <div id="Pie" class="tabcontent style="display: none;">
-        <h2>Graph #2</h2>
-        <p></p>
-      </div>
-      
-      <div id="Line" class="tabcontent style="display: none;">
-        <h2>Graph #3</h2>
-        <p></p>
-      </div> 
+      # Import second time series dataset
+      data2 = pd.read_csv(
+          "data/data2.csv",
+          parse_dates=["date"],
+          index_col="date",
+      )
+
+      >>> data2.head()
+
+      # Import the data with unknown date column
+      data2 = pd.read_csv("data/data2.csv")
+
+      # Inspect the dtypes
+      >>> data2.dtypes
+
+      date          object
+      feature_1    float64
+      dtype: object
+
+      data2["date"] = pd.to_datetime(data2["date"], format="%Y-%m-%d", errors="coerce")
+
+      # Check if the conversion is successful
+      assert data2["date"].dtype == "datetime64[ns]"
+      </code>
+      </pre>
+    </div>
+  </div> 
+
+  <div id="Extract" class="tabcontent style="display: none;">
+    <h2>Source</h2>
+      <pre>
+      <code>
+        import requests
+        import json
+
+        my_headers = {'Accept': '*/*',
+                      'Accept-Encoding': 'gzip, deflate, br',
+                      'Connection': 'keep-alive',
+                      'Content-Type': 'application/json',
+                      'Token': 'HKilVNrkwUheCujcSAwJDZnNLAwTUrDj',
+                      }
+
+        file_number = 0
+
+        for i in range(1, 38859, 1000):
+            response = requests.get(f"https://www.ncdc.noaa.gov/cdo-web/api/v2/locations?offset={i}&limit=1000", headers=my_headers)
+            data = json.loads(response.text)
+
+            with open(f"listed_locations{file_number}.json", "w") as f:
+                f.write(json.dumps(data))
+            file_number +=1
+
+      </code>
+      </pre>
+  </div> 
 
 </body>
 
