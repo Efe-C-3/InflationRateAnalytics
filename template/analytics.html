@@ -11,12 +11,13 @@ Analytics page
       <button id="defaultOpen" class="tablinks" onclick="openTab(event, 'Load')">Load</button>
       <button class="tablinks" onclick="openTab(event, 'Transform')">Transform</button>
       <button class="tablinks" onclick="openTab(event, 'Extract')">Extract</button>
+      <button class="tablinks" onclick="openTab(event, 'ImageUpload')">ImageUpload</button>
   </div>
   
   <div id="Load" class="tabcontent" style="display: block;">
     <h2>Graph</h2>
     <p></p>
-    <img style="width: 720px; height: 480px;" alt="Image description" src="{% static 'media/barchart.jpg' %}"/>
+    <img style="width: 720px; height: 480px;" alt="Image description" src="{% static 'images/barchart.jpg' %}"/>
   </div>
   
   <div id="Transform" class="tabcontent style="display: none;">
@@ -63,6 +64,7 @@ Analytics page
 
   <div id="Extract" class="tabcontent style="display: none;">
     <h2>Source</h2>
+    <div class="scroll">
       <pre>
       <code>
         import requests
@@ -87,8 +89,17 @@ Analytics page
 
       </code>
       </pre>
-  </div> 
+    </div>
+  </div>  
 
+  <div id="ImageUpload" class="tabcontent style="display: none;">
+    <h2>Source</h2>
+    <form method = "post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Upload</button>
+    </form>
+  </div> 
 </body>
 
 {% endblock content %}
